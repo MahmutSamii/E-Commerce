@@ -94,6 +94,7 @@ function FlashSale(props) {
 
     return (
         <FlashSales
+            subtitle={"today's"}
             title="Flash Sales"
             showTimer={true}
             products={products}

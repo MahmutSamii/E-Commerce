@@ -93,12 +93,13 @@ const TimerBox = styled(Box)(({theme}) => ({
 }));
 
 const FlashSales = ({
-                        title ,
+                        subtitle,
+                        title,
                         products = [],
                         showTimer = true,
                         onAddToCart = true,
-                        btnOpen=true,
-                        viewBtnOpen= true,
+                        btnOpen = true,
+                        viewBtnOpen = true,
                         discountBadgeColor,
                         discountBadgeText,
                         enableSlider = true,
@@ -143,7 +144,7 @@ const FlashSales = ({
     };
 
     const handleColorSelect = (productId, color) => {
-        setSelectedColors((prev) => ({ ...prev, [productId]: color }));
+        setSelectedColors((prev) => ({...prev, [productId]: color}));
     };
 
     const visibleProducts = enableSlider
@@ -155,7 +156,7 @@ const FlashSales = ({
             <Stack direction="row" spacing={2} alignItems="center" mb={2}>
                 <Box sx={{width: 20, height: 40, bgcolor: '#DB4444', borderRadius: 1}}/>
                 <Typography variant="subtitle1" color="#DB4444" fontWeight="600">
-                    Today's
+                    {subtitle}
                 </Typography>
             </Stack>
 
@@ -167,7 +168,8 @@ const FlashSales = ({
                     {showTimer && (
                         <>
                             <Stack spacing={1}>
-                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption" color="text.secondary">
+                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption"
+                                            color="text.secondary">
                                     Days
                                 </Typography>
                                 <TimerBox sx={{
@@ -181,7 +183,8 @@ const FlashSales = ({
                             </Stack>
                             <Typography variant="h5" color="text.secondary">:</Typography>
                             <Stack spacing={1}>
-                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption" color="text.secondary">
+                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption"
+                                            color="text.secondary">
                                     Hours
                                 </Typography>
                                 <TimerBox sx={{
@@ -195,7 +198,8 @@ const FlashSales = ({
                             </Stack>
                             <Typography variant="h5" color="text.secondary">:</Typography>
                             <Stack spacing={1}>
-                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption" color="text.secondary">
+                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption"
+                                            color="text.secondary">
                                     Minutes
                                 </Typography>
                                 <TimerBox sx={{
@@ -209,7 +213,8 @@ const FlashSales = ({
                             </Stack>
                             <Typography variant="h5" color="text.secondary">:</Typography>
                             <Stack spacing={1}>
-                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption" color="text.secondary">
+                                <Typography fontSize={'13px'} fontWeight={'bold'} variant="caption"
+                                            color="text.secondary">
                                     Seconds
                                 </Typography>
                                 <TimerBox sx={{
@@ -225,25 +230,25 @@ const FlashSales = ({
                     )}
                 </Stack>
                 {enableSlider && (
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
+                    <Box sx={{display: 'flex', justifyContent: 'space-between', mt: 4}}>
                         <IconButton onClick={() => handleSlide('left')} disabled={currentIndex === 0}>
-                            <KeyboardArrowLeft />
+                            <KeyboardArrowLeft/>
                         </IconButton>
                         <IconButton
                             onClick={() => handleSlide('right')}
                             disabled={currentIndex === Math.ceil(products.length / cardsPerRow) - 1}
                         >
-                            <KeyboardArrowRight />
+                            <KeyboardArrowRight/>
                         </IconButton>
                     </Box>
                 )}
-                {viewBtnOpen &&(
+                {viewBtnOpen && (
                     <Stack direction="row" spacing={1}>
                         <Button
                             variant="contained"
                             sx={{
                                 bgcolor: '#DB4444',
-                                '&:hover': { bgcolor: '#c13e3e' },
+                                '&:hover': {bgcolor: '#c13e3e'},
                                 px: 4,
                                 py: 1.5,
                                 color: 'white'
@@ -265,36 +270,15 @@ const FlashSales = ({
                 {visibleProducts.map((product) => (
                     <ProductCard key={product.id}>
                         <Box sx={{position: 'relative', p: 2, backgroundColor: '#F5F5F5'}}>
-                            {product.discount&& (
+                            {product.discount && (
                                 <DiscountBadge color={discountBadgeColor}>
-                                    {"-"+product.discount+'%'}
+                                    {"-" + product.discount + '%'}
                                 </DiscountBadge>
                             )}
-                            {discountBadgeText&& (
+                            {discountBadgeText && (
                                 <DiscountBadge color={discountBadgeColor}>
                                     {discountBadgeText}
                                 </DiscountBadge>
-                            )}
-                            {product.colors && (
-                                <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-                                    {product.colors.map((color) => (
-                                        <Box
-                                            key={color}
-                                            sx={{
-                                                width: 24,
-                                                height: 24,
-                                                borderRadius: '50%',
-                                                backgroundColor: color,
-                                                border:
-                                                    selectedColors[product.id] === color
-                                                        ? '2px solid black'
-                                                        : '2px solid transparent',
-                                                cursor: 'pointer',
-                                            }}
-                                            onClick={() => handleColorSelect(product.id, color)}
-                                        />
-                                    ))}
-                                </Stack>
                             )}
                             <IconWrapper>
                                 <StyledIconButton>
@@ -334,20 +318,41 @@ const FlashSales = ({
                                 )}
                             </Stack>
                             <Stack direction="row" spacing={1} alignItems="center">
-                                <Rating name="read-only" value={product.rating} readOnly />
+                                <Rating name="read-only" value={product.rating} readOnly/>
                                 <Typography color="text.secondary">({product.reviews})</Typography>
                             </Stack>
+                            {product.colors && (
+                                <Stack direction="row" spacing={1} sx={{mt: 2}}>
+                                    {product.colors.map((color) => (
+                                        <Box
+                                            key={color}
+                                            sx={{
+                                                width: 18,
+                                                height: 18,
+                                                borderRadius: '50%',
+                                                backgroundColor: color,
+                                                border:
+                                                    selectedColors[product.id] === color
+                                                        ? '2px solid black'
+                                                        : '2px solid transparent',
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => handleColorSelect(product.id, color)}
+                                        />
+                                    ))}
+                                </Stack>
+                            )}
                         </CardContent>
                     </ProductCard>
                 ))}
             </Box>
-            {btnOpen &&(
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+            {btnOpen && (
+                <Box sx={{display: 'flex', justifyContent: 'center', mt: 4}}>
                     <Button
                         variant="contained"
                         sx={{
                             bgcolor: '#DB4444',
-                            '&:hover': { bgcolor: '#c13e3e' },
+                            '&:hover': {bgcolor: '#c13e3e'},
                             px: 4,
                             py: 1.5,
                             color: 'white'
