@@ -6,6 +6,7 @@ import ProductSection from "../../containers/HomePage/ProductSection/ProductSect
 import PromoBanner from "../../containers/HomePage/PromoBannerSection/PromoBanner";
 import OurProductSection from "../../containers/HomePage/OurProductSection/OurProduct";
 import FeaturedSection from "../../containers/HomePage/FeaturedSection/FeaturedSection";
+import ServicesSection from "../../containers/HomePage/ServicesSection/ServicesSection";
 
 function Page(props) {
     return (
@@ -17,6 +18,7 @@ function Page(props) {
             <PromoBanner/>
             <OurProductSection/>
             <FeaturedSection/>
+            <ServicesSection/>
         </>
     );
 }

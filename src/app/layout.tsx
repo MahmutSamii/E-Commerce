@@ -7,6 +7,7 @@ import {CssBaseline} from "@mui/material";
 import Header from "../../components/header/Header";
 import Head from "next/head";
 import Navbar from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
             <Header/>
             <Navbar/>
             <main>{children}</main>
+            <Footer/>
         </ThemeProvider>
         </body>
         </html>
