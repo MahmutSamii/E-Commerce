@@ -81,6 +81,7 @@ function OurProductSection(props) {
     return (
         <FlashSales
             subtitle={'Our Products'}
+            subtitleColor={'#DB4444'}
             title="Explore Our Products"
             products={products}
             showTimer={false}

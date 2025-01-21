@@ -94,12 +94,16 @@ const TimerBox = styled(Box)(({theme}) => ({
 
 const FlashSales = ({
                         subtitle,
+                        subtitleColor,
                         title,
                         products = [],
                         showTimer = true,
                         onAddToCart = true,
                         btnOpen = true,
                         viewBtnOpen = true,
+                        viewBtnOpenColor,
+                        viewBtnOpenText,
+                        viewBtnOpenTextColor,
                         discountBadgeColor,
                         discountBadgeText,
                         enableSlider = true,
@@ -155,7 +159,7 @@ const FlashSales = ({
         <Container maxWidth="lg" sx={{pt: 10}}>
             <Stack direction="row" spacing={2} alignItems="center" mb={2}>
                 <Box sx={{width: 20, height: 40, bgcolor: '#DB4444', borderRadius: 1}}/>
-                <Typography variant="subtitle1" color="#DB4444" fontWeight="600">
+                <Typography variant="subtitle1" color={subtitleColor} fontWeight="600">
                     {subtitle}
                 </Typography>
             </Stack>
@@ -247,14 +251,14 @@ const FlashSales = ({
                         <Button
                             variant="contained"
                             sx={{
-                                bgcolor: '#DB4444',
+                                bgcolor: viewBtnOpenColor,
                                 '&:hover': {bgcolor: '#c13e3e'},
                                 px: 4,
                                 py: 1.5,
-                                color: 'white'
+                                color: viewBtnOpenTextColor
                             }}
                         >
-                            View All
+                            {viewBtnOpenText}
                         </Button>
                     </Stack>
                 )}

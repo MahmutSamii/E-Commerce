@@ -44,6 +44,7 @@ function ProductSection(props) {
     return (
         <FlashSales
             subtitle={'This Month'}
+            subtitleColor={'#DB4444'}
             title="Best Selling Products"
             products={products}
             showTimer={false}
@@ -51,6 +52,9 @@ function ProductSection(props) {
             onAddToCart={false}
             btnOpen={false}
             viewBtnOpen={true}
+            viewBtnOpenColor={'#DB4444'}
+            viewBtnOpenText={'View All'}
+            viewBtnOpenTextColor={'white'}
         />
     );
 }

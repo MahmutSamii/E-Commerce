@@ -95,13 +95,17 @@ function FlashSale(props) {
     return (
         <FlashSales
             subtitle={"today's"}
+            subtitleColor={'#DB4444'}
             title="Flash Sales"
             showTimer={true}
             products={products}
             currentTime={currentTime}
             discountBadgeColor={'#DB4444'}
             showSlider
-            viewBtnOpen={false}
+            viewBtnOpen={true}
+            viewBtnOpenColor={'#DB4444'}
+            viewBtnOpenText={'View All'}
+            viewBtnOpenTextColor={'white'}
         />
     );
 }
